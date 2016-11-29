@@ -1,0 +1,73 @@
+<!--top-header-->
+<div ng-controller="HeaderController">
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-main">
+                <div class="col-md-4 top-header-left">
+                    <div class="search-bar">
+                        <input type="text" placeholder="{{ 'HEADER.SEARCH' | translate }}">
+                        <input type="submit" value="">
+                    </div>
+                </div>
+                <div class="col-md-4 top-header-middle">
+                    <a ui-sref="home"><img src="img/logo.png" alt="" height="248px" width="500px" /></a>
+                </div>
+                <div class="col-md-4 top-header-right">
+                    <div class="cart box_1">
+                        <a ui-sref="cart">
+                            <div class="total">
+                                <span class="simpleCart_total">( {{ cart.length }}</span> {{ 'HEADER.ITEMS' | translate }})
+                            </div>
+                                <img src="img/cart-1.png" alt="" />
+                        </a>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--top-header-->
+    <!--bottom-header-->
+    <div class="header-bottom">
+        <div class="container">
+            <div class="top-nav">
+                <ul class="memenu skyblue">
+                    <li class="active">
+                        <button ui-sref="home" class="btn btnGreen dropdown-toggle">{{ 'HEADER.HOME' | translate }}</button>
+                    </li>
+                    <li class="grid" ng-repeat="class in itemClasses">
+                        <button ng-click="changeClass(class)" href="" class="btn btnGreen dropdown-toggle" id="menuClass{{ $index }}"
+                           type="button" data-toggle="dropdown">
+                            {{ class[lang] }}
+                        </button>
+                    </li>
+                    <li class="grid">
+                        <div class="dropdown" dropdown>
+                            <button class="btn btnGreen dropdown-toggle" id="menulang" type="button" data-toggle="dropdown">
+                                {{ getCurrentLanguage() }}
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menulang">
+                                <li role="presentation" ng-repeat="language in languages">
+                                        <a role="menuitem" tabindex="-1" href="" ng-click="changeLanguage(language.id)">
+                                            {{ language.label }}
+                                         </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clearfix"><br/></div>
+                <ul class="memenu skyblue" ng-show="currentClass.url">
+                    <li class="grid" ng-repeat="type in itemTypes | filter: currentClass.url">
+                        <button class="btn btnGreen" type="button" ui-sref="menu({typeId: type.id})">
+                            {{ type[lang] }}
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!--bottom-header-->

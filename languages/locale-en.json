@@ -1,0 +1,10 @@
+{
+  "HEADER": {
+    "HOME": "Home",
+    "SEARCH": "Search...",
+    "ITEMS": " items"
+  },
+  "HOME": {
+    "QUICK_VIEW": "Quick View"
+  }
+}

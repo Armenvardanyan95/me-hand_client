@@ -1,0 +1,45 @@
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="breadcrumbs-main">
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">New Products</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!--end-breadcrumbs-->
+<!--start-product-->
+<div class="product">
+    <div class="container">
+        <div class="product-main">
+            <div class="col-md-9 p-left">
+                <div class="product-one">
+                    <div class="col-md-4 product-left single-left" ng-repeat="item in items track by $index">
+                        <div class="p-one simpleCart_shelfItem">
+                            <a ui-sref="item({itemId: item.id})">
+                                <img src="{{ item.main_pic }}" alt="" />
+                                <div class="mask mask1">
+                                    <span>{{ 'HOME.QUICK_VIEW' | translate }}</span>
+                                </div>
+                            </a>
+                            <h4>{{ item[lang].title }}</h4>
+                            <p><a class="item_add" href="#"><i></i> <span class=" item_price">{{ item[lang].price }}</span></a></p>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="col-md-3 p-right single-right">
+                <h3>Price</h3>
+                <ul class="product-categories p1">
+                    <li><a href="#">600$-700$</a> <span class="count">(14)</span></li>
+                    <li><a href="#">700$-800$</a> <span class="count">(2)</span></li>
+                    <li><a href="#">800$-900$</a> <span class="count">(2)</span></li>
+                    <li><a href="#">900$-1000$</a> <span class="count">(8)</span></li>
+                    <li><a href="#">1000$-1100$</a> <span class="count">(11)</span></li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
