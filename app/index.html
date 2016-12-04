@@ -1,54 +1,75 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
-<head>
-	<meta charset="utf-8">
-	<title>ME-Hand</title>
-	<meta name="description" content="">
-	<meta name="author" content="" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<head>
+		<meta charset="utf-8">
+		<title>ME-Hand</title>
+		<meta name="description" content="">
+		<meta name="author" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<!-- build:css styles/main.css -->
-	<link rel="stylesheet" href="../styles/bootstrap.css">
-	<link rel="stylesheet" href="../styles/flexslider.css">
-	<link rel="stylesheet" href="../styles/memenu.css">
-	<link rel="stylesheet" href="../styles/style.css">
-	<!-- endbuild -->
+		<!-- build:css styles/main.css -->
+		<link rel="stylesheet" href="../styles/bootstrap.css">
+		<link rel="stylesheet" href="../styles/flexslider.css">
+		<link rel="stylesheet" href="../styles/memenu.css">
+		<link rel="stylesheet" href="../styles/style.css">
+		<link rel="stylesheet" href="../styles/loading-bar.min.css">
+		<link rel="stylesheet" href="../styles/magnific-popup.css">
+		<link rel="stylesheet" href="../styles/angular-material.min.css">
+		<!-- endbuild -->
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
 
-	 <!--build:js scripts/vendor.js-->
-	<!-- bower:js -->
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-	<!-- endbower -->
+		 <!--build:js scripts/vendor.js-->
+		<!-- bower:js -->
 
-	 <!--endbuild-->
+		<!-- endbower -->
 
-	<!-- build:js scripts/main.js -->
-	<script type="text/javascript" src="../components/app.js"></script>
-	<script type="text/javascript" src="../services/app.js"></script>
-	<script type="text/javascript" src="../directives/app.js"></script>
+		 <!--endbuild-->
 
-	<script type="text/javascript" src="../components/home/home.js"></script>
-	<script type="text/javascript" src="../components/includes/header.js"></script>
-	<script type="text/javascript" src="../components/item/item.js"></script>
-	<script type="text/javascript" src="../components/cart/cart.js"></script>
-	<script type="text/javascript" src="../components/menu/menu.js"></script>
+		<!-- build:js scripts/main.js -->
+		<script type="text/javascript" src="../components/app.js"></script>
+		<script type="text/javascript" src="../services/app.js"></script>
+		<script type="text/javascript" src="../directives/app.js"></script>
 
-
-	<script type="text/javascript" src="../services/item-class.js"></script>
-	<script type="text/javascript" src="../services/item.js"></script>
-	<script type="text/javascript" src="../services/item-type.js"></script>
-	<script type="text/javascript" src="../services/config.js"></script>
-
-	<script type="text/javascript" src="../directives/dropdown.js"></script>
-	<script type="text/javascript" src="../directives/flexslider.js"></script>
-	<!-- endbuild -->
-
+		<script type="text/javascript" src="../components/home/home.js"></script>
+		<script type="text/javascript" src="../components/includes/header.js"></script>
+		<script type="text/javascript" src="../components/item/item.js"></script>
+		<script type="text/javascript" src="../components/cart/cart.js"></script>
+		<script type="text/javascript" src="../components/menu/menu.js"></script>
+		<script type="text/javascript" src="../components/search/search.js"></script>
+		<script type="text/javascript" src="../components/order/order.js"></script>
+		<script type="text/javascript" src="../components/includes/toast.js"></script>
 
 
+		<script type="text/javascript" src="../services/item-class.js"></script>
+		<script type="text/javascript" src="../services/item.js"></script>
+		<script type="text/javascript" src="../services/item-type.js"></script>
+		<script type="text/javascript" src="../services/config.js"></script>
+		<script type="text/javascript" src="../services/order.js"></script>
+		<script type="text/javascript" src="../services/increment.js"></script>
 
-</head>
-<body>
-	<div ng-include="'components/includes/header.html'"></div>
-		<div ui-view></div>
-	<div ng-include="'components/includes/footer.html'"></div>
-</body>
+		<script type="text/javascript" src="../directives/dropdown.js"></script>
+		<script type="text/javascript" src="../directives/flexslider.js"></script>
+		<script type="text/javascript" src="../directives/image-popup.js"></script>
+		<script type="text/javascript" src="../directives/to-top.js"></script>
+		<script type="text/javascript" src="../directives/ng-enter.js"></script>
+		<script type="text/javascript" src="../directives/fix-to-bottom.js"></script>
+		<!-- endbuild -->
+
+
+
+
+	</head>
+	<body>
+
+		<div ng-include="'components/includes/header.html'"></div>
+			<div ui-view>
+				<div layout="row" layout-sm="column" layout-align="space-around">
+					<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+				</div>
+			</div>
+		<div ng-include="'components/includes/footer.html'"></div>
+		<a href="#0" class="cd-top" to-top>Top</a>
+	</body>
 </html>

@@ -4,35 +4,40 @@
     angular.module('app')
         .controller('HeaderController', HeaderController);
 
-    HeaderController.$inject = ['$scope', '$rootScope', '$translate', 'ItemClass', 'ItemType', '$localStorage'];
+    HeaderController.$inject = ['$scope', '$rootScope', '$translate', 'ItemClass', 'ItemType', '$localStorage', '$state'];
 
-    function HeaderController($scope, $rootScope, $translate, ItemClass, ItemType, $localStorage) {
+    function HeaderController($scope, $rootScope, $translate, ItemClass, ItemType, $localStorage, $state) {
 
         $scope.languages = [
             {
                 id: 'hy',
-                label: 'Հայերեն'
+                label: 'Հայերեն',
+                flag: 'img/armenian.png'
             },
             {
                 id: 'ru',
-                label: 'Русский'
+                label: 'Русский',
+                flag: 'img/russian.png'
             },
             {
                 id: 'en',
-                label: 'English'
+                label: 'English',
+                flag: 'img/english.png'
             },
             {
                 id: 'ge',
-                label: 'Georgian'
+                label: 'Georgian',
+                flag: 'img/georgian.png'
             }
         ];
 
-        $scope.cart = $localStorage.cart;
+        $scope.cartLength = cartLength;
         $scope.currentClass = {url: false};
         $scope.changeClass = changeClass;
 
         $scope.getCurrentLanguage = getCurrentLanguage;
         $scope.changeLanguage = changeLanguage;
+        $scope.search = search;
 
         $scope.itemClasses = ItemClass.query();
         $scope.itemTypes = ItemType.query();
@@ -50,11 +55,22 @@
         
         function changeLanguage(lang) {
             $translate.use(lang);
-            $rootScope.lang = lang;
+            $localStorage.lang = lang;
+            $rootScope.lang = $localStorage.lang;
+            
         }
 
         function changeClass(cls){
             $scope.currentClass.url = cls.url;
+        }
+
+        function cartLength() {
+            return $localStorage.cart.length;
+        }
+        
+        function search(query) {
+            console.log('i am here')
+            $state.go('search', {query: query});
         }
     }
 

@@ -5,18 +5,18 @@
             <div class="top-header-main">
                 <div class="col-md-4 top-header-left">
                     <div class="search-bar">
-                        <input type="text" placeholder="{{ 'HEADER.SEARCH' | translate }}">
-                        <input type="submit" value="">
+                        <input type="text" ng-model="query" placeholder="{{ 'HEADER.SEARCH' | translate }}" ng-enter="search(query)">
+                        <input type="submit" value="" ui-sref="search({query: query})">
                     </div>
                 </div>
                 <div class="col-md-4 top-header-middle">
-                    <a ui-sref="home"><img src="img/logo.png" alt="" height="248px" width="500px" /></a>
+                    <a ui-sref="home"><img src="img/logo.png" alt="" width="304" height="50" /></a>
                 </div>
                 <div class="col-md-4 top-header-right">
                     <div class="cart box_1">
                         <a ui-sref="cart">
                             <div class="total">
-                                <span class="simpleCart_total">( {{ cart.length }}</span> {{ 'HEADER.ITEMS' | translate }})
+                                <span class="simpleCart_total">( {{ cartLength() }}</span> {{ 'HEADER.ITEMS' | translate }})
                             </div>
                                 <img src="img/cart-1.png" alt="" />
                         </a>
@@ -33,28 +33,30 @@
         <div class="container">
             <div class="top-nav">
                 <ul class="memenu skyblue">
+
+                    <li class="grid floatLeft">
+                        <ul class="socialIcon">
+                            <li><a target="_blank" href="https://www.facebook.com/MeHandArmenia/?fref=ts"><i class="fa fa-facebook-square facebook"></i></a></li>
+                            <li><a target="_blank" href="https://www.instagram.com/mehandarmenia/"><i class="fa fa-instagram instagram"></i></a></li>
+                            <li><a target="_blank" href="https://www.youtube.com/channel/UCd1_3myKotmp6eOYwNS1Pgw"><i class="fa fa-youtube-play  youtube"></i></a></li>
+                        </ul>
+                    </li>
+
                     <li class="active">
                         <button ui-sref="home" class="btn btnGreen dropdown-toggle">{{ 'HEADER.HOME' | translate }}</button>
                     </li>
+
                     <li class="grid" ng-repeat="class in itemClasses">
                         <button ng-click="changeClass(class)" href="" class="btn btnGreen dropdown-toggle" id="menuClass{{ $index }}"
                            type="button" data-toggle="dropdown">
                             {{ class[lang] }}
                         </button>
                     </li>
-                    <li class="grid">
-                        <div class="dropdown" dropdown>
-                            <button class="btn btnGreen dropdown-toggle" id="menulang" type="button" data-toggle="dropdown">
-                                {{ getCurrentLanguage() }}
-                                <span class="caret"></span></button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="menulang">
-                                <li role="presentation" ng-repeat="language in languages">
-                                        <a role="menuitem" tabindex="-1" href="" ng-click="changeLanguage(language.id)">
-                                            {{ language.label }}
-                                         </a>
-                                </li>
-                            </ul>
-                        </div>
+
+                    <li class="grid floatRight">
+                        <span href="" ng-click="changeLanguage(language.id)" ng-class="{activeLanguage: language.id == lang}" ng-repeat="language in languages" class="flags">
+                            <img src="{{ language.flag }}" width="24" height="18">
+                        </span>
                     </li>
                 </ul>
                 <div class="clearfix"><br/></div>

@@ -1,9 +1,11 @@
 angular.module('app', [
     'ui.router',
     'ngStorage',
+    'validation',
     'pascalprecht.translate',
     'angular-loading-bar',
     'app.services',
+    'ngMaterial',
     'app.directives'
 ]);
 
@@ -15,9 +17,9 @@ angular.module('app').run(run);
 
 
 
-config.$inject = ['$stateProvider', '$urlRouterProvider', '$translateProvider'];
+config.$inject = ['$stateProvider', '$urlRouterProvider', '$translateProvider', '$validationProvider'];
 
-function config($stateProvider, $urlRouterProvider, $translateProvider) {
+function config($stateProvider, $urlRouterProvider, $translateProvider, $validationProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider
         .state('home', {
@@ -49,21 +51,60 @@ function config($stateProvider, $urlRouterProvider, $translateProvider) {
                     return Item.query({item_type: $stateParams.typeId});
                 }
             }
+        })
+        .state('search', {
+            url: '/search?query',
+            templateUrl: '../components/menu/menu.html',
+            controller: 'SearchController',
+            resolve: {
+                items: function (Item, $stateParams) {
+                    return Item.query({search: $stateParams.query});
+                }
+            }
         });
+
+    var lang = localStorage.getItem('ngStorage-lang') || 'en';
+    lang = lang.replace(/"/g,"");
+
+    var expression = {
+        required: /[\s\S]*\S[\s\S]*/,
+        phone: /^[0-9+]{5,20}$/,
+    };
+
+    var validMsg = {
+        en: {
+            required: {
+                error: 'This field is required'
+            },
+            phone: {
+                error: 'Should be a valid phone number'
+            }
+        }
+    };
+
+    $validationProvider.setExpression(expression).setDefaultMsg(validMsg[lang]);
+
+    $validationProvider.setSuccessHTML(function (msg, element, attrs) {
+        return '<p class="redTxt">' + msg + '</p>';
+    });
+
 
     $translateProvider.useStaticFilesLoader({
         prefix: 'languages/locale-',
         suffix: '.json'
-    }).fallbackLanguage('en');
+    });
 
-    $translateProvider.preferredLanguage('en');
+    $translateProvider.preferredLanguage(lang);
+
+    
 }
 
 run.$inject = ['$rootScope', '$localStorage'];
 
 function run($rootScope, $localStorage) {
-    $rootScope.lang = 'en';
-    
+    $rootScope.lang = $localStorage.lang || 'en';
+
+
     if(typeof $localStorage.cart == "undefined"){
         $localStorage.cart = [];
     }

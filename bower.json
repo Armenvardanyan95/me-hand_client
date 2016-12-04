@@ -29,6 +29,9 @@
     "jquery": "^3.1.1",
     "flexslider": "^2.6.3",
     "ngstorage": "^0.3.11",
-    "angular-loading-bar": "^0.9.0"
+    "angular-loading-bar": "^0.9.0",
+    "magnific-popup": "^1.1.0",
+    "angular-material": "^1.1.1",
+    "angular-validation": "^1.4.2"
   }
 }

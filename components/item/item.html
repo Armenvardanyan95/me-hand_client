@@ -3,7 +3,7 @@
     <div class="container">
         <div class="breadcrumbs-main">
             <ol class="breadcrumb">
-                <li><a ui-sref="home">Home</a></li>
+                <li><a ui-sref="home">{{ 'HEADER.HOME' | translate }}</a></li>
                 <li class="active">{{ item.item_class_detail[lang] }}</li>
                 <li class="active">{{ item[lang].title }}</li>
             </ol>
@@ -21,9 +21,16 @@
                         <div id="slider" class="flexslider">
                             <ul class="slides">
                                 <li>
-                                    <img src="{{ item.main_pic }}" />
+                                    <a href="{{ item.main_pic }}" class="zoom" image-popup>
+                                        <img src="{{ item.main_pic }}" />
+                                    </a>
                                 </li>
-                                <!-- items mirrored twice, total of 12 -->
+
+                                <li ng-repeat="img in item.item_images">
+                                    <a href="{{ img }}" class="zoom" image-popup>
+                                        <img src="{{ img }}" />
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <div id="carousel" class="flexslider">
@@ -31,7 +38,10 @@
                                 <li>
                                     <img src="{{ item.main_pic }}" />
                                 </li>
-                                <!-- items mirrored twice, total of 12 -->
+
+                                <li ng-repeat="img in item.item_images">
+                                    <img src="{{ img }}" />
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -39,32 +49,40 @@
                         <div class="details-left-info simpleCart_shelfItem">
                             <h3>{{ item[lang].title }}</h3>
                             <div class="price_single">
-                                <span class="reducedfrom" ng-if="item.discount">{{ item[lang].price }}</span>
-                                <span class="actual item_price">{{ item[lang].price -  item[lang].price * (item.discount / 100) }}</span><a href="#">click for offer</a>
+                                <span class="reducedfrom" ng-if="item.discount">{{ 'CURRENCY' | translate }} {{ item[lang].price }}</span>
+                                <span class="actual item_price">
+                                    {{ 'CURRENCY' | translate }}
+                                    {{ item[lang].price -  item[lang].price * (item.discount / 100) }}
+                                </span>
                             </div>
-                            <h2 class="quick">Quick Overview:</h2>
+                            <h2 class="quick">{{ 'ITEM.QUICK_OVERVIEW' | translate }}</h2>
                             <p class="quick_desc">{{ item[lang].description }}</p>
                             <ul class="size">
-                                <h3>Length</h3>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">6</a></li>
+                                <h3>{{ 'ITEM.LENGTH' | translate }}</h3>
+                                <li ng-repeat="size in sizeRange">
+                                    <a ng-class="{greenBtn: size == item.length}" href="" ng-click="item.length = size">
+                                        {{ size }}
+                                    </a>
+                                </li>
                             </ul>
                             <div class="quantity_box">
                                 <ul class="product-qty">
-                                    <span>Quantity:</span>
-                                    <select ng-model="item.quantity">
-                                        <option value="1" selected="selected">1</option>
-                                        <option ng-repeat="number in numbers" value="{{ number }}">{{ number }}</option>
+                                    <span>{{ 'ITEM.QUANTITY' | translate }}</span>
+                                    <select ng-model="item.quantity" ng-options="number as number for number in numbers track by number">
                                     </select>
                                 </ul>
                             </div>
                             <div class="clearfix"> </div>
 
                             <div class="single-but item_add" ng-if="!isInCart(item)">
-                                <input type="submit" value="add to cart" ng-click="addToCart(item)"/>
+                                <md-button class="md-raised greenBtn" ng-click="addToCart(item)">
+                                    {{ 'ITEM.ADD_TO_CART' | translate }}
+                                </md-button>
                             </div>
                             <div class="single-but item_add" ng-if="isInCart(item)">
-                                <input type="submit" class="redBtn" value="remove from cart" ng-click="removeFromCart(item)"/>
+                                <md-button class="md-raised redBtn" ng-click="removeFromCart(item)">
+                                    {{ 'ITEM.REMOVE_FROM_CART' | translate }}
+                                </md-button>
                             </div>
                         </div>
                     </div>
@@ -75,14 +93,14 @@
                         <div class="col-md-4 product-left single-left" ng-if="$index < 3" ng-repeat="item in similarItems track by $index">
                             <div class="p-one simpleCart_shelfItem">
 
-                                <a href="#">
+                                <a ui-sref="item({itemId: item.id})">
                                     <img src="{{ item.main_pic }}" alt="" />
                                     <div class="mask mask1">
                                         <span>{{ 'HOME.QUICK_VIEW' | translate }}</span>
                                     </div>
                                 </a>
                                 <h4>{{ item[lang].title }}</h4>
-                                <p><a class="item_add" href="#"><i></i> <span class=" item_price">{{ item[lang].price }}</span></a></p>
+                                <p><a class="item_add"><i></i> <span class=" item_price">{{ item[lang].price }}</span></a></p>
 
                             </div>
                         </div>
@@ -91,13 +109,12 @@
                 </div>
             </div>
             <div class="col-md-3 single-right">
-                <h3>Price</h3>
+                <h3>{{ 'MENU.TYPES' | translate }}</h3>
                 <ul class="product-categories p1">
-                    <li><a href="#">600$-700$</a> <span class="count">(14)</span></li>
-                    <li><a href="#">700$-800$</a> <span class="count">(2)</span></li>
-                    <li><a href="#">800$-900$</a> <span class="count">(2)</span></li>
-                    <li><a href="#">900$-1000$</a> <span class="count">(8)</span></li>
-                    <li><a href="#">1000$-1100$</a> <span class="count">(11)</span></li>
+                    <li ng-repeat="type in types track by $index">
+                        <a ui-sref="menu({typeId: type.id})">{{ type[lang] }}</a>
+                    </li>
+
                 </ul>
             </div>
             <div class="clearfix"> </div>

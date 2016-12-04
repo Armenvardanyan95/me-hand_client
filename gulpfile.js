@@ -105,7 +105,6 @@ gulp.task('jscs', function () {
 
 gulp.task('copy-html-files', function () {
     var stream =  gulp.src('./**/*.html')
-        .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('./dist/'));
     return stream;
 });

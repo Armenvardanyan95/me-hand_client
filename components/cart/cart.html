@@ -2,8 +2,8 @@
     <div class="container">
         <div class="breadcrumbs-main">
             <ol class="breadcrumb">
-                <li><a ui-sref="home">Home</a></li>
-                <li class="active">Cart</li>
+                <li><a ui-sref="home">{{ 'HEADER.HOME' | translate }}</a></li>
+                <li class="active">{{ 'CART' | translate }}</li>
             </ol>
         </div>
     </div>
@@ -14,13 +14,13 @@
     <div class="container">
         <div class="ckeckout-top">
             <div class=" cart-items heading">
-                <h3>My Shopping Bag ({{ cart.length }})</h3>
+                <h3>{{ 'CART.SHOPPING_BAG' | translate }} ({{ cart.length }})</h3>
                 <div class="in-check" >
                     <ul class="unit">
-                        <li><span>Item</span></li>
-                        <li><span>Product Name</span></li>
-                        <li><span>Unit Price</span></li>
-                        <li><span>Quantity</span></li>
+                        <li><span>{{ 'CART.ITEM' | translate }}</span></li>
+                        <li><span>{{ 'CART.PRODUCT_NAME' | translate }}</span></li>
+                        <li><span>{{ 'CART.UNIT_PRICE' | translate }}</span></li>
+                        <li><span>{{ 'ITEM.QUANTITY' | translate }}</span></li>
                         <li> </li>
                         <div class="clearfix"> </div>
                     </ul>
@@ -31,13 +31,16 @@
                             </a>
                         </li>
                         <li><span>{{ item[lang].title }}</span></li>
-                        <li><span>{{ item[lang].price }}</span></li>
+                        <li><span>{{ 'CURRENCY' | translate }}  {{ item[lang].price }}</span></li>
                         <li><span>{{ item.quantity }}</span></li>
-                        <li> <a ng-click="removeFromCart(item)" class="add-cart cart-check">REMOVE</a></li>
+                        <li> <md-button ng-click="removeFromCart(item)" class="md-fab md-mini redBtn">
+                            <md-icon md-svg-src="../../img/x.svg"></md-icon>
+                        </md-button></li>
                         <div class="clearfix"> </div>
                     </ul>
 
-                    <span class="">Total: {{ total() }}</span>
+                    <span class="">{{ 'CART.TOTAL' | translate }} {{ 'CURRENCY' | translate }} {{ total() }}</span>
+                    <md-button href="" class="floatRight md-raised greenBtn" ng-click="showOrderDialog()">{{ 'CART.ORDER' | translate }}</md-button>
                 </div>
             </div>
         </div>

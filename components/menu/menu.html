@@ -2,8 +2,8 @@
     <div class="container">
         <div class="breadcrumbs-main">
             <ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li class="active">New Products</li>
+                <li><a href="index.html">{{ 'HEADER.HOME' | translate }}</a></li>
+                <li class="active">{{ 'MENU.SEARCH' | translate}}</li>
             </ol>
         </div>
     </div>
@@ -24,20 +24,25 @@
                                 </div>
                             </a>
                             <h4>{{ item[lang].title }}</h4>
-                            <p><a class="item_add" href="#"><i></i> <span class=" item_price">{{ item[lang].price }}</span></a></p>
+                            <p>
+                                <a class="item_add" href="#"><i></i>
+                                    <span class=" item_price">
+                                        {{ 'CURRENCY' | translate }}
+                                        {{ item[lang].price }}
+                                    </span>
+                                </a>
+                            </p>
                         </div>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
             </div>
-            <div class="col-md-3 p-right single-right">
-                <h3>Price</h3>
+            <div class="col-md-3 p-right single-right" ng-if="types && types.length">
+                <h3>{{ 'MENU.TYPES' | translate }}</h3>
                 <ul class="product-categories p1">
-                    <li><a href="#">600$-700$</a> <span class="count">(14)</span></li>
-                    <li><a href="#">700$-800$</a> <span class="count">(2)</span></li>
-                    <li><a href="#">800$-900$</a> <span class="count">(2)</span></li>
-                    <li><a href="#">900$-1000$</a> <span class="count">(8)</span></li>
-                    <li><a href="#">1000$-1100$</a> <span class="count">(11)</span></li>
+                    <li ng-repeat="type in types track by $index">
+                        <a ui-sref="menu({typeId: type.id})">{{ type[lang] }}</a>
+                    </li>
                 </ul>
             </div>
             <div class="clearfix"> </div>
