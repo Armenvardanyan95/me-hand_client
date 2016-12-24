@@ -4,12 +4,12 @@
     angular.module('app')
         .controller('CartController', CartController);
 
-    CartController.$inject = ['$scope', '$localStorage', '$rootScope', '$mdDialog'];
+    CartController.$inject = ['cart', '$rootScope', '$mdDialog'];
 
-    function CartController($scope, $localStorage, $rootScope, $mdDialog) {
-        $scope.cart = $localStorage.cart;
-        $scope.total = calculateTotal;
-        $scope.showOrderDialog = showOrderDialog;
+    function CartController(cart, $rootScope, $mdDialog) {
+        this.cart = cart;
+        this.total = calculateTotal;
+        this.showOrderDialog = showOrderDialog;
         
         function showOrderDialog() {
             $mdDialog.show({
@@ -21,11 +21,15 @@
         
         function calculateTotal() {
             var total = 0;
-            angular.forEach($scope.cart, function (value, key) {
-                total += value[$rootScope.lang].price * parseInt(value.quantity);
+            angular.forEach(this.cart, function (value) {
+                var price = value[$rootScope.lang].price;
+                if(value.discount){
+                    price = price - Math.floor((price * value.discount) / 100);
+                }
+                total += price * parseInt(value.quantity);
             });
             
-            return total;
+            return parseInt(Math.floor(total));
         }
     }
 

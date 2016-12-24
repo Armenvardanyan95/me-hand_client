@@ -2,10 +2,14 @@
   "HEADER": {
     "HOME": "Գլխավոր",
     "SEARCH": "Որոնել...",
-    "ITEMS": " ապրանք"
+    "ITEMS": " ապրանք",
+    "DISCOUNT": "Զեղչեր"
   },
   "HOME": {
-    "QUICK_VIEW": "Դիտել"
+    "QUICK_VIEW": "Դիտել",
+    "DESCRIPTION_BELT": "ME Hand <br/> գոտի",
+    "DESCRIPTION_BRACELET": "ME Hand <br/> թեվնոց",
+    "CODE": "Կոդ ֊ "
   },
   "MENU": {
     "TYPES": "Ապրանքի տեսակներ",
@@ -18,7 +22,8 @@
     "ITEM": "Ապրանք ",
     "PRODUCT_NAME": "Ապրանքի անվանումը ",
     "UNIT_PRICE": "Հատի գինը",
-    "TOTAL": "Ընդհանուր գումար` "
+    "TOTAL": "Ընդհանուր գումար` ",
+    "DISCOUNT": "Պրոմո Կոդ"
   },
   "ORDER": {
     "TITLE": "Պատվեր",

@@ -2,10 +2,14 @@
   "HEADER": {
     "HOME": "Главная",
     "SEARCH": "Искать...",
-    "ITEMS": " товаров"
+    "ITEMS": " товаров",
+    "DISCOUNT": "Скидки"
   },
   "HOME": {
-    "QUICK_VIEW": "Просмотр"
+    "QUICK_VIEW": "Просмотр",
+    "DESCRIPTION_BELT": "ME Hand <br/> пояс",
+    "DESCRIPTION_BRACELET": "ME Hand <br/> браслет",
+    "CODE": "Код ֊ "
   },
   "MENU": {
     "TYPES": "Типы Продуктов",
@@ -18,7 +22,8 @@
     "ITEM": "Товар ",
     "PRODUCT_NAME": "Наименование Товара ",
     "UNIT_PRICE": "Цена Единицы",
-    "TOTAL": "Общая Сумма: "
+    "TOTAL": "Общая Сумма: ",
+    "DISCOUNT": "Промо Код"
   },
   "ORDER": {
     "TITLE": "Заказ",

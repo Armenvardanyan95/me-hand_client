@@ -2,7 +2,7 @@
     <div class="container">
         <div class="breadcrumbs-main">
             <ol class="breadcrumb">
-                <li><a href="index.html">{{ 'HEADER.HOME' | translate }}</a></li>
+                <li><a ui-sref="home">{{ 'HEADER.HOME' | translate }}</a></li>
                 <li class="active">{{ 'MENU.SEARCH' | translate}}</li>
             </ol>
         </div>
@@ -15,10 +15,10 @@
         <div class="product-main">
             <div class="col-md-9 p-left">
                 <div class="product-one">
-                    <div class="col-md-4 product-left single-left" ng-repeat="item in items track by $index">
+                    <div class="col-md-4 product-left single-left" ng-repeat="item in ::items track by $index">
                         <div class="p-one simpleCart_shelfItem">
                             <a ui-sref="item({itemId: item.id})">
-                                <img src="{{ item.main_pic }}" alt="" />
+                                <img src="{{ item.thumbnail }}" alt="" />
                                 <div class="mask mask1">
                                     <span>{{ 'HOME.QUICK_VIEW' | translate }}</span>
                                 </div>
@@ -40,7 +40,7 @@
             <div class="col-md-3 p-right single-right" ng-if="types && types.length">
                 <h3>{{ 'MENU.TYPES' | translate }}</h3>
                 <ul class="product-categories p1">
-                    <li ng-repeat="type in types track by $index">
+                    <li ng-repeat="type in ::types track by $index">
                         <a ui-sref="menu({typeId: type.id})">{{ type[lang] }}</a>
                     </li>
                 </ul>

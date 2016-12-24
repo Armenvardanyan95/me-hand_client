@@ -3,7 +3,7 @@
 
     angular.module('app.services').config(config);
 
-    config.$injecy = ['$resourceProvider'];
+    config.$inject = ['$resourceProvider'];
 
     function config($resourceProvider) {
         $resourceProvider.defaults.stripTrailingSlashes = false;

@@ -6,12 +6,15 @@ angular.module('app', [
     'angular-loading-bar',
     'app.services',
     'ngMaterial',
+    'angular-countdown',
     'app.directives'
 ]);
 
 angular.module('app').config(config);
 
 angular.module('app').run(run);
+
+angular.module('app').constant('moment', moment);
 
 
 
@@ -25,7 +28,15 @@ function config($stateProvider, $urlRouterProvider, $translateProvider, $validat
         .state('home', {
             url: '/',
             templateUrl: '../components/home/home.html',
-            controller: 'HomeController'
+            controller: 'HomeController',
+            resolve: {
+                popularItems: function (Item, Promoted) {
+                    return Item.query();
+                },
+                promotedItems: function (Promoted) {
+                    return Promoted.query()
+                }
+            }
         })
         .state('item', {
             url: '/item/:itemId',
@@ -40,7 +51,8 @@ function config($stateProvider, $urlRouterProvider, $translateProvider, $validat
         .state('cart', {
             url: '/cart',
             templateUrl: '../components/cart/cart.html',
-            controller: 'CartController'
+            controller: 'CartController',
+            controllerAs: 'vm'
         })
         .state('menu', {
             url: '/menu/:typeId',
@@ -61,6 +73,16 @@ function config($stateProvider, $urlRouterProvider, $translateProvider, $validat
                     return Item.query({search: $stateParams.query});
                 }
             }
+        })
+        .state('discounts', {
+            url: '/discounts',
+            templateUrl: '../components/menu/menu.html',
+            controller: 'DiscountsController',
+            resolve: {
+                items: function (Discount) {
+                    return Discount.query();
+                }
+            }
         });
 
     var lang = localStorage.getItem('ngStorage-lang') || 'en';
@@ -72,17 +94,15 @@ function config($stateProvider, $urlRouterProvider, $translateProvider, $validat
     };
 
     var validMsg = {
-        en: {
-            required: {
-                error: 'This field is required'
-            },
-            phone: {
-                error: 'Should be a valid phone number'
-            }
+        required: {
+            error: 'This field is required'
+        },
+        phone: {
+            error: 'Should be a valid phone number'
         }
     };
 
-    $validationProvider.setExpression(expression).setDefaultMsg(validMsg[lang]);
+    $validationProvider.setExpression(expression).setDefaultMsg(validMsg);
 
     $validationProvider.setSuccessHTML(function (msg, element, attrs) {
         return '<p class="redTxt">' + msg + '</p>';
@@ -94,7 +114,7 @@ function config($stateProvider, $urlRouterProvider, $translateProvider, $validat
         suffix: '.json'
     });
 
-    $translateProvider.preferredLanguage(lang);
+    $translateProvider.preferredLanguage(lang).fallbackLanguage('ru');
 
     
 }

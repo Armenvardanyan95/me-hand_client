@@ -277,12 +277,14 @@ ul.callbacks_tabs.callbacks2_tabs {
 /*--end-banner--*/
 /*--start-banner-bottom--*/
 .banner-bottom {
-	background: rgba(153, 153, 153, 0.49);
-	padding-top: 3em;
+	background-image: url('../img/background-winter.jpg');
+	padding-top: 4em;
+	padding-bottom: 2em;
 }
 .bnr-one{
 	background: #fff;
 	padding: 30px 15px;
+	box-shadow: 2px 2px #888888;
 }
 .bnr-left h1,.bnr-left h2{
 	font-size: 1.7em;
@@ -345,7 +347,7 @@ ul.callbacks_tabs.callbacks2_tabs {
 /*--end-banner-bottom--*/
 /*--start-shoes--*/
 .shoes {
-	padding: 7em 0px;
+	padding: 3em 0px;
 }
 /*--end-shoes--*/
 /*--start-abt-shoe--*/
@@ -498,43 +500,6 @@ ul.callbacks_tabs.callbacks2_tabs {
 	text-align:center;
 }
 
-.flex-control-nav {
-	background: none repeat scroll 0 0 #FFFFFF;
-	bottom: 127px !important;
-	display: block !important;
-	opacity: 0.66 !important;
-	padding: 10px;
-	position: absolute;
-	text-align: center;
-	top: auto !important;
-	width: 100%;
-	z-index: 999 !important;
-}
-
-.flex-direction-nav {
-	display: block !important;
-	opacity: 1 !important;
-	top: 30% !important;
-	width: 100%;
-	z-index: 999 !important;
-}
-
-.flex-direction-nav a {
-	color: rgba(0, 0, 0, 0.8);
-	cursor: pointer;
-	display: block;
-	height: 40px;
-	margin: 0;
-	opacity: 0;
-	overflow: hidden;
-	padding-top: 8px;
-	position: absolute;
-	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
-	top: 50%;
-	transition: all 0.3s ease 0s;
-	width: 40px;
-	z-index: 10;
-}
 
 .footer-main p {
 	color: #181b2a;
@@ -575,6 +540,10 @@ ul.callbacks_tabs.callbacks2_tabs {
 	font-size: 2.2em;
 	font-weight: 600;
 	margin: 0;
+}
+
+.heading h3 .floatRight {
+	font-size: 1em !important;
 }
 
 .cd-top {
@@ -747,6 +716,7 @@ ol.breadcrumb {
 .p-one {
 	border: 1px solid rgba(24, 27, 42, 0.13);
 	padding: 40px 15px;
+	min-height: 343px;
 }
 .product-left:hover .p-one{
 	border: 1px solid #008800;
@@ -792,6 +762,7 @@ ol.breadcrumb {
 .product-left{
 	position:relative;
 	text-align:center;
+	margin-bottom: 2em;
 }
 .mask span:hover{
 	text-decoration:none;
@@ -1128,6 +1099,7 @@ ul.size li a:hover {
 }
 .bnr-one,.bnr-two{
 	padding: 25px 15px;
+	min-height: 231px;
 }
 }
 @media(max-width:1366px){
@@ -1180,6 +1152,11 @@ p.quick_desc {
 ul.size {
 	margin-top: 1.1em;
 }
+
+.bottomFar {
+	margin-bottom: 5px;
+}
+
 .single-but {
 	margin-top: 10px;
 }
@@ -1391,7 +1368,12 @@ a.simpleCart_empty {
 	width: 25%;
 	float: left;
 	padding: 0 8px;
+	margin-bottom: 2em;
 }
+
+.flex-direction-nav a.flex-prev { opacity: 1 !important; }
+.flex-direction-nav a.flex-next { opacity: 1 !important; }
+
 .p-one h4 {
 	font-size: 17px;
 	margin: 0px 0 0 0;
@@ -1605,6 +1587,7 @@ ul.unit li span {
 .product-left {
 	width: 50%;
 	padding: 0 5px;
+	margin-bottom: 2em;
 }
 .single-right h3 {
 	font-size: 1.4em;
@@ -1726,6 +1709,7 @@ a.simpleCart_empty {
 }
 .banner-bottom-right, .banner-bottom-left {
 	padding: 0 5px;
+	box-shadow: 5px 5px 3px #888888;
 }
 .bnr-left h1, .bnr-left h2 {
 	font-size: 1.1em;

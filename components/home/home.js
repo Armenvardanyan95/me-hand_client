@@ -4,11 +4,12 @@
     angular.module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Item'];
+    HomeController.$inject = ['$scope', 'popularItems', 'promotedItems'];
 
-    function HomeController($scope, Item) {
+    function HomeController($scope, popularItems, promotedItems) {
         
-        $scope.popularItems = Item.query();
+        $scope.popularItems = popularItems;
+        $scope.promotedItems = promotedItems;
         
     }
 

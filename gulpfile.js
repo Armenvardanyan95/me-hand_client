@@ -30,37 +30,6 @@ gulp.task('clean', function () {
 });
 
 
-gulp.task('sass', function () {
-    var stream =  gulp.src('./app/styles/**/*.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('./app/styles/'));
-    return stream;
-});
-
-gulp.task("upload", function() {
-    gulp.src("./dist/**")
-        .pipe(s3({
-            Bucket: 'c2s-angular-app', //  Required
-            ACL:    'public-read'       //  Needs to be user-defined
-        }, {
-            // S3 Constructor Options, ie:
-            maxRetries: 5
-        }))
-    ;
-});
-
-gulp.task('sass:watch', function () {
-    gulp.watch('./app/styles/**/*.scss', ['sass']);
-});
-
-gulp.task('UIImages', function () {
-    var stream = gulp.src('./app/styles/images/*')
-        .pipe(gulp.dest('./dist/styles/images'));
-
-    return stream;
-});
-
-
 gulp.task('bower-files', function () {
     var stream = gulp.src('./app/index.html')
         .pipe(wiredep({
@@ -98,22 +67,17 @@ gulp.task('css-files', function () {
 });
     
 gulp.task('jscs', function () {
-    var stream = gulp.src('./app/**/*.js')
+    var stream = gulp.src('./**/*.js')
         .pipe(jscs())
         .pipe(jscs.reporter());
 });
 
 gulp.task('copy-html-files', function () {
-    var stream =  gulp.src('./**/*.html')
-        .pipe(gulp.dest('./dist/'));
+    var stream =  gulp.src('./components/**/*.html')
+        .pipe(gulp.dest('./dist/components'));
     return stream;
 });
 
-gulp.task('less', function () {
-    var stream = gulp.src('./styles/**/*.less')
-        .pipe(gulp.dest('./dist'));
-    return stream;
-});
 
 gulp.task('image', function () {
     var stream =  gulp.src('./img/*.*')
@@ -123,8 +87,8 @@ gulp.task('image', function () {
 });
 
 gulp.task('font', function () {
-    var stream =  gulp.src('./app/font/**/*.*')
-    .pipe(gulp.dest('./dist/font/'));
+    var stream =  gulp.src('./fonts/**/*.*')
+    .pipe(gulp.dest('./dist/fonts/'));
     return stream;
 });
 
@@ -141,19 +105,15 @@ gulp.task('initialize', function () {
 
 gulp.task('dev', function (callback) {
     runSequence(
-        'sass:watch',
-        'sass',
+        'clean',
         'css-files',
         // 'jscs',
         'bower-files-dev',
         'copy-html-files',
         'image',
-        'less',
         'font',
         'languages',
-        'UIImages',
         'initialize',
-        'watch',
     callback);
 });
 
@@ -161,15 +121,11 @@ gulp.task('prod', function(callback){
     runSequence(
         'initialize',
         'bower-files',
-        'sass',
         'css-files',
         'copy-html-files',
         'image',
-        'less',
         'languages',
         'font',
-        'UIImages',
-        'upload',
         callback
     );
 });
@@ -182,5 +138,5 @@ gulp.task('watch', function() {
 
 
 gulp.task('default', function () {
-    runSequence('clean', 'dev');
+    gulp.run('dev');
 });

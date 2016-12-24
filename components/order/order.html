@@ -2,7 +2,9 @@
     <form name="orderForm" ng-cloak>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2 class="md-display-2">{{ 'ORDER.TITLE' | translate }} ({{ order.items.length }} {{ 'HEADER.ITEMS' | translate }})</h2>
+                <h2 class="md-display-2">{{ 'ORDER.TITLE' | translate }}
+                    ({{ order.items.length }} {{ 'HEADER.ITEMS' | translate }} : {{ 'CURRENCY' | translate }} {{ total() }})
+                </h2>
                 <span flex></span>
             </div>
         </md-toolbar>
@@ -23,6 +25,13 @@
                 <label>{{ 'ORDER.YOUR_ADDRESS' | translate }}</label>
                 <input type="text" ng-model="order.address" validator="required" name="addr">
             </md-input-container>
+
+            <md-input-container>
+                <label>{{ 'CART.DISCOUNT' | translate }}</label>
+                <input type="text" ng-model="promoCode" name="promoCode">
+            </md-input-container>
+
+
         </md-dialog-content>
 
         <md-dialog-actions layout="row">

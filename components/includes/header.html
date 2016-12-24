@@ -53,6 +53,10 @@
                         </button>
                     </li>
 
+                    <li class="grid">
+                        <button ui-sref="discounts" class="btn btnGreen dropdown-toggle">{{ 'HEADER.DISCOUNT' | translate }}</button>
+                    </li>
+
                     <li class="grid floatRight">
                         <span href="" ng-click="changeLanguage(language.id)" ng-class="{activeLanguage: language.id == lang}" ng-repeat="language in languages" class="flags">
                             <img src="{{ language.flag }}" width="24" height="18">

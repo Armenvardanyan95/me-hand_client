@@ -2,10 +2,14 @@
   "HEADER": {
     "HOME": "Home",
     "SEARCH": "Search...",
-    "ITEMS": " items"
+    "ITEMS": " items",
+    "DISCOUNT": "Discounts"
   },
   "HOME": {
-    "QUICK_VIEW": "Quick View"
+    "QUICK_VIEW": "Quick View",
+    "DESCRIPTION_BELT": "ME Hand <br/> belt",
+    "DESCRIPTION_BRACELET": "ME Hand <br/> bracelet",
+    "CODE": "Code ֊ "
   },
   "MENU": {
     "TYPES": "Types",
@@ -18,7 +22,8 @@
     "ITEM": "Item ",
     "PRODUCT_NAME": "Product Name ",
     "UNIT_PRICE": "Unit Price ",
-    "TOTAL": "Total: "
+    "TOTAL": "Total: ",
+    "DISCOUNT": "Promo Code"
   },
   "ORDER": {
     "TITLE": "Order",
