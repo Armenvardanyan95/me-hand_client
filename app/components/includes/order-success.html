@@ -1,0 +1,23 @@
+<md-dialog class="callee-confirmation" aria-label="Call notification">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 class="md-display-2">
+            </h2>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content class="sticky-container">
+        <div>
+            <p>{{ 'TOASTS.ORDER_HEAD' | translate }}</p>
+        </div>
+        {{ 'TOASTS.ORDER_SUCCESS' | translate }}
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="closeDialog()">
+            {{ 'TOASTS.CLOSE' | translate }}
+        </md-button>
+    </div>
+
+</md-dialog>

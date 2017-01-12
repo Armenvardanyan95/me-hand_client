@@ -18,10 +18,39 @@ module.exports = function(config) {
         './bower_components/angular/angular.js',
         './node_modules/angular-mocks/angular-mocks.js',
         './bower_components/angular-resource/angular-resource.js',
-        './services/app.js',
-        './services/config.js',
-        './services/item.js',
-        './services/item.spec.js'
+        './bower_components/moment/moment.js',
+        './bower_components/ngstorage/ngStorage.js',
+        './bower_components/angular-validation/dist/angular-validation.js',
+        './bower_components/angular-translate/angular-translate.js',
+        './bower_components/angular-loading-bar/build/loading-bar.js',
+        './bower_components/angular-material/angular-material.js',
+        './bower_components/angular-animate/angular-animate.js',
+        './bower_components/angular-aria/angular-aria.js',
+        './bower_components/angularcountdown/dist/angularcountdown.js',
+        './bower_components/angular-ui-router/release/angular-ui-router.js',
+        './bower_components/angular-truncate/src/truncate.js',
+        './bower_components/angular-sanitize/angular-sanitize.js',
+        './bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+        'app/services/app.js',
+        'app/directives/app.js',
+        'app/me-hand/router.js',
+        'app/me-hand/app.js',
+        'app/services/config.service.js',
+        'app/services/models.service.js',
+        'app/services/utility.service.js',
+        'app/components/item/item.controller.js',
+        'app/components/item/item.spec.js',
+        'app/components/cart/cart.service.js',
+        'app/components/cart/cart.controller.js',
+        'app/components/cart/cart.spec.js',
+        'app/components/includes/header.controller.js',
+        'app/components/includes/header.spec.js',
+        'app/components/home/home.controller.js',
+        'app/components/home/home.spec.js',
+        'app/components/order/order.service.js',
+        'app/components/order/order.controller.js',
+        'app/components/order/order.controller.js',
+        'app/components/order/order.spec.js'
     ],
 
 
@@ -33,6 +62,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        'app/components/**/*.js': 'coverage'
     },
 
 

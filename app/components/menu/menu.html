@@ -1,0 +1,31 @@
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="breadcrumbs-main">
+            <span class="greenTxt">{{ 'MENU.DISCOUNT' | translate }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="product">
+    <div class="container">
+        <div class="product-main">
+            <div class="col-md-9 p-left">
+                <div class="product-one">
+                    <div class="col-md-4 product-left single-left" ng-repeat="item in vm.items track by $index">
+                        <item instance="{{ item }}"></item>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="col-md-3 p-right single-right" ng-if="vm.types && vm.types.length">
+                <h3>{{ 'MENU.TYPES' | translate }}</h3>
+                <ul class="product-categories p1">
+                    <li ng-repeat="type in vm.types track by $index">
+                        <a ui-sref="menu({typeId: type.id})">{{ type[lang] }}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>

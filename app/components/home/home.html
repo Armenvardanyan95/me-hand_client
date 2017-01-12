@@ -1,0 +1,96 @@
+<!--End-slider-script-->
+<!--start-banner-bottom-->
+<div class="banner-bottom">
+    <div class="container">
+        <div class="banner-bottom-top">
+            <div class="col-md-6 banner-bottom-left" ng-repeat="item in vm.promotedItems">
+                <div class="bnr-one">
+                    <div class="bnr-left">
+                        <h1>
+                            <a translate="HOME.DESCRIPTION_BELT" ng-if="!$index"
+                               ui-sref="item({itemId: item.id})">
+                            </a>
+                            <a translate="HOME.DESCRIPTION_BRACELET" ng-if="$index"
+                               ui-sref="item({itemId: item.id})">
+                            </a>
+                        </h1>
+                        <p>{{ item[lang].title }}<br/>{{ 'HOME.CODE' | translate }} {{ item.code }}</p>
+
+                        <div class="b-btn">
+                            <a ui-sref="item({itemId: item.id})">{{ 'HOME.QUICK_VIEW' | translate }}</a>
+                        </div>
+                    </div>
+                    <div class="bnr-right">
+                        <a ui-sref="item({itemId: item.id})">
+                            <img src="{{ item.collage_pic }}" ng-if="item.collage_pic"
+                                 height="100%" width="100%" alt="" />
+                            <img src="{{ item.thumbnail }}" ng-if="!item.collage_pic"
+                                 height="100%" width="100%" alt="" />
+                        </a>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!--end-banner-bottom-->
+<!--start-shoes-->
+<div class="shoes">
+    <div class="container">
+        <div class="product-one" >
+            <div class="col-md-3 product-left" ng-if="$index < 8" ng-repeat="item in vm.popularItems track by $index">
+                <div class="p-one simpleCart_shelfItem">
+                    <a ui-sref="item({itemId: item.id})">
+                        <img src="{{ item.thumbnail }}" alt="" />
+                        <div class="mask">
+                            <span>{{ 'HOME.QUICK_VIEW' | translate }}</span>
+                        </div>
+                    </a>
+                    <h4>{{ item[lang].title | characters:30 }}</h4>
+                    <p>
+                        <a class="item_add" href="#"><i></i>
+                            <span class=" item_price">
+                                {{ 'CURRENCY' | translate }} {{ item[lang].price }}
+                            </span>
+                        </a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--end-shoes-->
+<!--start-abt-shoe-->
+<div class="abt-shoe" ng-show="false">
+    <div class="container">
+        <div class="abt-shoe-main">
+            <div class="col-md-4 abt-shoe-left">
+                <div class="abt-one">
+                    <a href="single.html"><img src="../img/abt-1.jpg" alt="" /></a>
+                    <h4><a href="single.html">Cras dolor ligula</a></h4>
+                    <p>Phasellus auctor vulputate egestas. Nulla facilisi. Cras dolor ligula, pharetra vitae efficitur ac, tempus vitae nisl. Aliquam erat volutpat. </p>
+                </div>
+            </div>
+            <div class="col-md-4 abt-shoe-left">
+                <div class="abt-one">
+                    <a href="single.html"><img src="../img/abt-2.jpg" alt="" /></a>
+                    <h4><a href="single.html">Cras dolor ligula</a></h4>
+                    <p>Phasellus auctor vulputate egestas. Nulla facilisi. Cras dolor ligula, pharetra vitae efficitur ac, tempus vitae nisl. Aliquam erat volutpat. </p>
+                </div>
+            </div>
+            <div class="col-md-4 abt-shoe-left">
+                <div class="abt-one">
+                    <a href="single.html"><img src="../img/abt-3.jpg" alt="" /></a>
+                    <h4><a href="single.html">Cras dolor ligula</a></h4>
+                    <p>Phasellus auctor vulputate egestas. Nulla facilisi. Cras dolor ligula, pharetra vitae efficitur ac, tempus vitae nisl. Aliquam erat volutpat. </p>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!--end-abt-shoe-->

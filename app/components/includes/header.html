@@ -1,0 +1,102 @@
+<!--top-header-->
+<div ng-controller="HeaderController as vm">
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-main">
+                <div class="col-md-4 top-header-left">
+                    <div class="search-bar">
+                        <input type="text" ng-model="vm.query"
+                               placeholder="{{ 'HEADER.SEARCH' | translate }}" ng-enter="vm.search(vm.query)">
+                        <input type="submit" value="" ui-sref="search({query: query})">
+                    </div>
+                </div>
+                <div class="col-md-4 top-header-middle">
+                    <a ui-sref="home"><img src="img/logo.png" alt="" width="304" height="50" /></a>
+                </div>
+                <div class="col-md-4 top-header-right">
+                    <div class="cart box_1">
+                        <a ui-sref="cart">
+                            <div class="total">
+                                <span class="simpleCart_total">
+                                    ( {{ vm.cart.items.length }}
+                                </span>
+                                {{ 'HEADER.ITEMS' | translate }})
+                            </div>
+                                <img src="img/cart-1.png" alt="" />
+                        </a>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--top-header-->
+    <!--bottom-header-->
+    <div class="header-bottom">
+        <div class="container">
+            <div class="top-nav">
+                <ul class="memenu skyblue">
+
+                    <li class="grid floatLeft">
+                        <ul class="socialIcon">
+                            <li>
+                                <a target="_blank" href="https://www.facebook.com/MeHandArmenia/?fref=ts">
+                                    <i class="fa fa-facebook-square facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://www.instagram.com/mehandarmenia/">
+                                    <i class="fa fa-instagram instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://www.youtube.com/channel/UCd1_3myKotmp6eOYwNS1Pgw">
+                                    <i class="fa fa-youtube-play  youtube"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="active">
+                        <button ui-sref="home" class="btn btnGreen dropdown-toggle">
+                            {{ 'HEADER.HOME' | translate }}
+                        </button>
+                    </li>
+
+                    <li class="grid" ng-repeat="class in vm.itemClasses">
+                        <button ng-click="vm.changeClass(class)" href="" class="btn btnGreen dropdown-toggle"
+                                id="menuClass{{ $index }}"
+                                type="button" data-toggle="dropdown">
+                            {{ class[lang] }}
+                        </button>
+                    </li>
+
+                    <li class="grid">
+                        <button ui-sref="discounts" class="btn btnGreen dropdown-toggle">
+                            {{ 'HEADER.DISCOUNT' | translate }}
+                        </button>
+                    </li>
+
+                    <li class="grid floatRight">
+                        <span href="" ng-click="vm.changeLanguage(language.id)"
+                              ng-class="{activeLanguage: language.id == lang}"
+                              ng-repeat="language in vm.languages" class="flags">
+                            <img src="{{ language.flag }}" width="24" height="18">
+                        </span>
+                    </li>
+                </ul>
+                <div class="clearfix"><br/></div>
+                <ul class="memenu skyblue" ng-show="vm.currentClass.url">
+                    <li class="grid" ng-repeat="type in vm.itemTypes | filter: vm.currentClass.url">
+                        <button class="btn btnGreen" type="button" ui-sref="menu({typeId: type.id})">
+                            {{ type[lang] }}
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!--bottom-header-->

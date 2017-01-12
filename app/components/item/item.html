@@ -1,0 +1,130 @@
+<div class="single contact">
+    <div class="container">
+        <div class="single-main">
+            <div class="col-md-9 single-main-left">
+                <div class="sngl-top" flexslider>
+                    <div class="col-md-5 single-top-left">
+                        <div id="slider" class="flexslider">
+                            <ul class="slides">
+                                <li>
+                                    <a href="{{ vm.item.main_pic }}" class="zoom" image-popup>
+                                        <img src="{{ vm.item.main_pic }}" />
+                                    </a>
+                                </li>
+
+                                <li ng-repeat="img in vm.item.item_images">
+                                    <a href="{{ img }}" class="zoom" image-popup>
+                                        <img src="{{ img }}" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="carousel" class="flexslider">
+                            <ul class="slides">
+                                <li>
+                                    <img src="{{ vm.item.main_pic }}" />
+                                </li>
+
+                                <li ng-repeat="img in vm.item.item_images">
+                                    <img src="{{ img }}" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-7 single-top-right">
+                        <div class="details-left-info simpleCart_shelfItem">
+                            <h3>{{ vm.item[lang].title }}</h3>
+                            <div class="price_single">
+                                <span class="reducedfrom" ng-if="vm.item.discount">
+                                    {{ 'CURRENCY' | translate }} {{ vm.item[lang].price }}
+                                </span>
+                                <span class="actual item_price">
+                                    {{ 'CURRENCY' | translate }}
+                                    {{ vm.item[lang].price -  vm.item[lang].price * (vm.item.discount / 100) }}
+                                </span>
+                                <span class="actual item_price">{{ vm.daysLeft(vm.item.discount_end, lang) }}</span>
+                            </div>
+                            <h2 class="quick">{{ 'ITEM.QUICK_OVERVIEW' | translate }}</h2>
+                            <p class="quick_desc">{{ vm.item[lang].description }}</p>
+                            <ul class="size" ng-if="!contains(vm.item)">
+                                <h3>{{ 'ITEM.LENGTH' | translate }}
+                                    <span class="redTxt">{{ 'ITEM.REQUIRED' | translate }}</span>
+                                </h3>
+                                <li
+                                 ng-repeat="size in
+                                 vm.sizeRange(vm.item.item_class_detail.min_size,
+                                              vm.item.item_class_detail.max_size,
+                                              vm.item.item_class_detail.step)"
+                                 class="bottomFar">
+                                    <a ng-class="{greenBtn: size == vm.item.length}"
+                                       href="" ng-click="vm.item.length = size">
+                                        {{ size }}
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="quantity_box" ng-if="!vm.cart.contains(vm.item)">
+                                <ul class="product-qty">
+                                    <span>{{ 'ITEM.QUANTITY' | translate }}</span>
+                                    <select ng-model="vm.item.quantity"
+                                            ng-options="number as number for number in vm.numbers track by number">
+                                    </select>
+                                </ul>
+                            </div>
+                            <div class="clearfix"> </div>
+
+                            <div class="single-but item_add" ng-if="!vm.cart.contains(vm.item)">
+                                <md-button ng-disabled="!vm.item.length" class="md-raised"
+                                           ng-class="{greenBtn: vm.item.length}"
+                                           ng-click="vm.cart.add(vm.item)">
+                                    {{ 'ITEM.ADD_TO_CART' | translate }}
+                                </md-button>
+                            </div>
+                            <div class="single-but item_add" ng-if="vm.cart.contains(vm.item)">
+                                <md-button class="md-raised redBtn" ng-click="vm.cart.remove(vm.item)">
+                                    {{ 'ITEM.REMOVE_FROM_CART' | translate }}
+                                </md-button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="latest products">
+                    <div class="product-one">
+                        <div class="col-md-4 product-left single-left" ng-if="$index < 3"
+                             ng-repeat="item in vm.similarItems track by $index">
+                            <div class="p-one simpleCart_shelfItem">
+
+                                <a ui-sref="item({itemId: item.id})">
+                                    <img src="{{ item.thumbnail }}" alt="" />
+                                    <div class="mask mask1">
+                                        <span>{{ 'HOME.QUICK_VIEW' | translate }}</span>
+                                    </div>
+                                </a>
+                                <h4>{{ item[lang].title }}</h4>
+                                <p>
+                                    <a class="item_add"><i></i>
+                                        <span class=" item_price">
+                                            {{ item[lang].price }}
+                                        </span>
+                                    </a>
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 single-right">
+                <h3>{{ 'MENU.TYPES' | translate }}</h3>
+                <ul class="product-categories p1">
+                    <li ng-repeat="type in vm.types track by $index">
+                        <a ui-sref="menu({typeId: type.id})">{{ type[lang] }}</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
